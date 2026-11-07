@@ -4,7 +4,7 @@
 #  缺少的項目會在啟動與 /ca reload 時自動補齊
 # ==========================================
 
-prefix: "&8[&bInvAudit&8] &r"
+prefix: "&8[&bCustomInvAudit&8] &r"
 
 command:
   unknown: "&c未知的子指令，輸入 &e/{label} &c查看說明。"

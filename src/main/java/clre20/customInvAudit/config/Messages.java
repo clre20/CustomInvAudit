@@ -6,6 +6,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,8 +31,10 @@ public final class Messages {
     private YamlConfiguration user = new YamlConfiguration();
     private YamlConfiguration defaults = new YamlConfiguration();
     private Component prefix = Component.empty();
+    private java.util.logging.Logger logger;
 
     public void load(JavaPlugin plugin) {
+        logger = plugin.getLogger();
         YamlConfiguration[] pair = YamlFiles.loadWithDefaults(plugin, "messages.yml");
         user = pair[0];
         defaults = pair[1];
@@ -74,6 +77,11 @@ public final class Messages {
     public void send(CommandSender to, String path, Object... placeholders) {
         String r = raw(path);
         if (r.isEmpty()) return;
+        if (to instanceof ConsoleCommandSender && logger != null) {
+            // 主控台走插件 logger，前綴統一是 [CustomInvAudit]
+            logger.info(plain(path, placeholders));
+            return;
+        }
         to.sendMessage(prefix.append(build(r, placeholders)));
     }
 
