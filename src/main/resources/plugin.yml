@@ -1,0 +1,83 @@
+name: CustomInvAudit
+description: 查看與修改玩家（含離線）背包、終界箱與生物的背包和屬性，並記錄所有修改。
+prefix: CustomInvAudit
+version: '${version}'
+
+main: clre20.customInvAudit.CustomInvAudit
+api-version: '26.1.1'
+load: POSTWORLD
+
+authors: [ Clre20 ]
+website: https://github.com/clre20/CustomInvAudit
+
+commands:
+  custominvaudit:
+    description: CustomInvAudit 主指令
+    usage: /<command> <inv|ec|entity|version|reload>
+    aliases: [ ca ]
+
+permissions:
+  custominvaudit.*:
+    description: CustomInvAudit 全部權限（不含 exempt）
+    default: op
+    children:
+      custominvaudit.inventory.view: true
+      custominvaudit.inventory.modify: true
+      custominvaudit.enderchest.self: true
+      custominvaudit.enderchest.other: true
+      custominvaudit.enderchest.modify: true
+      custominvaudit.offline: true
+      custominvaudit.stats.modify: true
+      custominvaudit.teleport: true
+      custominvaudit.entity.view: true
+      custominvaudit.entity.modify: true
+      custominvaudit.version: true
+      custominvaudit.reload: true
+  custominvaudit.inventory.view:
+    description: 查看玩家背包
+    default: op
+  custominvaudit.inventory.modify:
+    description: 修改玩家背包（含清空、強制丟出）
+    default: op
+    children:
+      custominvaudit.inventory.view: true
+  custominvaudit.enderchest.self:
+    description: 開自己的終界箱
+    default: op
+  custominvaudit.enderchest.other:
+    description: 查看別人的終界箱
+    default: op
+  custominvaudit.enderchest.modify:
+    description: 修改別人的終界箱
+    default: op
+    children:
+      custominvaudit.enderchest.other: true
+  custominvaudit.offline:
+    description: 可開離線玩家的背包與終界箱
+    default: op
+  custominvaudit.stats.modify:
+    description: 修改玩家血量、經驗、飢餓等數值
+    default: op
+  custominvaudit.teleport:
+    description: 使用傳送按鈕
+    default: op
+  custominvaudit.entity.view:
+    description: 查看生物
+    default: op
+  custominvaudit.entity.modify:
+    description: 修改生物的裝備、背包與屬性
+    default: op
+    children:
+      custominvaudit.entity.view: true
+  custominvaudit.exempt:
+    description: 無法被別人查看或修改
+    default: false
+  custominvaudit.bypass.exempt:
+    description: 無視 exempt 保護
+    default: false
+  custominvaudit.version:
+    description: 檢查更新與登入提醒
+    default: op
+  custominvaudit.reload:
+    description: 重新載入設定檔
+    default: op

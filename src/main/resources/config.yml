@@ -1,0 +1,45 @@
+# ==========================================
+#  CustomInvAudit 設定檔
+#  缺少的項目會在啟動與 /ca reload 時自動補齊
+# ==========================================
+
+# 更新檢查（GitHub Releases）
+update-checker:
+  # 伺服器啟動時在後台檢查一次
+  check-on-startup: true
+  # 有新版本時，具備 custominvaudit.version 權限的管理員登入 3 秒後提醒
+  notify-on-join: true
+
+gui:
+  # 開著介面時多久同步一次目標的內容（tick，20 = 1 秒，最小 5）
+  refresh-interval-ticks: 10
+  # /ca entity 不填 UUID 時，抓準心指著的生物的最遠距離（格，1~32）
+  entity-target-distance: 8
+
+tab-complete:
+  # /ca inv、/ca ec 補全時是否列出離線玩家
+  offline-players: false
+  # 補全最多顯示幾個名字
+  max-results: 50
+
+offline:
+  # 是否允許開啟離線玩家的背包與終界箱
+  enabled: true
+  # 寫入離線玩家資料前，先備份一份 <uuid>.dat.cia-bak（每位玩家只保留最新一份）
+  write-backup: true
+  # 玩家登入時若有未寫入的修改，最多等待幾秒（逾時會請玩家稍後再進）
+  login-wait-timeout-seconds: 10
+
+# 這些離線玩家（名稱或 UUID）一律視為受 exempt 保護
+# 玩家在線時改用 custominvaudit.exempt 權限判斷
+exempt-offline-players: []
+
+audit-log:
+  # 是否記錄修改
+  enabled: true
+  # 是否連「開啟查看」也記錄
+  log-views: false
+  # 紀錄檔保留天數（logs/yyyy-MM-dd.log）
+  keep-days: 30
+  # 每幾秒把記錄批次寫入磁碟（最小 2）
+  flush-interval-seconds: 10
