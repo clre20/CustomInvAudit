@@ -67,7 +67,9 @@ public final class CustomInvAudit extends JavaPlugin {
 
         audit.start();
         loadNamesIfNeeded();
-        if (config.checkOnStartup) {
+        if (getServer().getPluginManager().isPluginEnabled("HttpHub") && clre20.httpHub.api.HttpHubAPI.isAvailable()) {
+            clre20.httpHub.api.HttpHubAPI.registerUpdateCheck(this, "clre20/CustomInvAudit", getPluginMeta().getVersion(), "custominvaudit.version", null);
+        } else if (config.checkOnStartup) {
             updates.check().thenAccept(r -> {
                 if (isEnabled()) Bukkit.getScheduler().runTask(this, () -> sendUpdateResult(Bukkit.getConsoleSender(), r));
             });

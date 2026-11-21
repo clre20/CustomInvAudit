@@ -2,6 +2,9 @@
 
 CustomInvAudit 是一款 Paper 26.x 管理插件，可以用箱子介面查看與修改玩家（含離線）的背包、裝備、終界箱，以及生物的裝備、背包與各種屬性；所有修改都會寫進每日紀錄檔，方便事後稽核。
 
+
+> **版本檢查提示**：若伺服器有安裝 [HttpHub](https://github.com/clre20/HttpHub)，本插件自動由 HttpHub 集中處理版本檢查與管理員登入通知，避免各插件自開連線與背景執行緒。
+
 ## 功能
 
 - **玩家背包**：
@@ -86,6 +89,9 @@ CustomInvAudit 是一款 Paper 26.x 管理插件，可以用箱子介面查看�
 ---
 
 # CustomInvAudit (English)
+
+
+> **Update Checker**: When [HttpHub](https://github.com/clre20/HttpHub) is installed, update checks and operator login alerts are handled centrally by HttpHub via virtual threads, preventing redundant background connections.
 
 CustomInvAudit is a Paper 26.x admin plugin to view and edit the inventories, equipment and ender chests of online and offline players, plus the equipment, inventories and attributes of mobs, through chest GUIs. Every change is written to a daily audit log.
 

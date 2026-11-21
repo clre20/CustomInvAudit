@@ -81,3 +81,5 @@ permissions:
   custominvaudit.reload:
     description: 重新載入設定檔
     default: op
+
+softdepend: [ HttpHub ]
