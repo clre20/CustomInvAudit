@@ -83,22 +83,6 @@ CustomInvAudit 是一款 Paper 26.x 管理插件，可以用箱子介面查看�
 - 玩家資料來自舊版本：只能查看，請等他登入一次後再修改
 - 目標有 exempt 權限：會提示受到保護
 
-## 可設定的訊息
-
-`messages.yml` 主要區段：
-
-| 區段 | 說明 |
-|------|------|
-| `prefix` | 聊天訊息前綴 |
-| `command` | 指令說明與錯誤訊息 |
-| `gui` / `inventory` / `enderchest` / `entity` | 介面標題、按鈕名稱與說明 |
-| `stats` / `field` / `number` / `choice` / `confirm` / `location` | 子選單文字 |
-| `property` | 生物屬性名稱 |
-| `offline` | 離線讀寫相關訊息 |
-| `update` | 更新檢查訊息 |
-| `audit-log` | 紀錄檔每一行的格式 |
-| `values` | 顏色、職業、品種等選項的顯示名稱 |
-
 ---
 
 # CustomInvAudit (English)
@@ -185,19 +169,3 @@ Look at the villager, run the command, then click Attributes → Profession → 
 - The player logs in while you have the offline GUI open: it closes, and your edits are saved before they join
 - The player's data is from an older version: read-only until they log in once
 - The target has the exempt permission: you are told they are protected
-
-## Configurable Message Keys
-
-Main sections of `messages.yml`:
-
-| Key | Description |
-|-----|-------------|
-| `prefix` | Chat prefix |
-| `command` | Command help and errors |
-| `gui` / `inventory` / `enderchest` / `entity` | GUI titles, button names and lore |
-| `stats` / `field` / `number` / `choice` / `confirm` / `location` | Sub-menu text |
-| `property` | Mob attribute names |
-| `offline` | Offline read/write messages |
-| `update` | Update checker messages |
-| `audit-log` | Format of each audit log line |
-| `values` | Display names for colors, professions, variants and so on |
